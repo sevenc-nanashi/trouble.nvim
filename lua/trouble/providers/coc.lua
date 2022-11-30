@@ -59,10 +59,10 @@ function M.workspace_diagnostics(_, bufnr, cb, _)
       item.message = item.message or line or ""
     end
     
-    if info.severity == "Information" then
+    if item.severity == "Information" then
       severity = "Info"
     else
-      severity = info.severity
+      severity = item.severity
     end
 
     table.insert(items, {
