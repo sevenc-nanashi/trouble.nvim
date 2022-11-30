@@ -448,7 +448,7 @@ function View:_preview()
   end
   util.debug("preview")
 
-  if item.is_file ~= true item.bufnr > 0 then
+  if item.is_file ~= true and item.bufnr > 0 then
     vim.api.nvim_win_set_buf(self.parent, item.bufnr)
     vim.api.nvim_win_set_cursor(self.parent, { item.start.line + 1, item.start.character })
 
