@@ -64,6 +64,10 @@ function M.workspace_diagnostics(_, bufnr, cb, _)
     else
       severity = item.severity
     end
+    
+    if vim.fn.sign_getdefined("Coc" .. severity) == [] then
+      M.error("Unknown severity " .. severity)
+    end
 
     table.insert(items, {
       bufnr = bufnr,
