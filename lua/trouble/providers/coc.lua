@@ -18,9 +18,9 @@ local function is_ready(feature)
 end
 
 function M.workspace_diagnostics(_, bufnr, cb, _)
-  if vim.fn.bufexists(bufnr) ~= 1 then
+  if vim.fn.bufexists(bufnr) ~= 1 or vim.fn.buflisted(bufnr) ~= 1 then
     return
-   end
+  end
   local items = {}
 
   local raw = vim.fn["coc#rpc#request"]("diagnosticList", {})
