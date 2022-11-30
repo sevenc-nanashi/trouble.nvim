@@ -65,7 +65,7 @@ function M.workspace_diagnostics(_, bufnr, cb, _)
       severity = item.severity
     end
     
-    if vim.fn.sign_getdefined("Coc" .. severity) == [] then
+    if next(vim.fn.sign_getdefined("Coc" .. severity)) == nil then
       M.error("Unknown severity " .. severity)
     end
 
