@@ -63,7 +63,7 @@ function M.workspace_diagnostics(_, bufnr, cb, _)
       col = col + 1,
       start = start,
       finish = finish,
-      sign = vim.fn.sign_getdefined("Coc" .. item.severity)[1]["text"],
+      sign = vim.fn.sign_getdefined("Coc" .. item.severity)[0]["text"],
       sign_hl = "Coc" .. item.severity .. "Sign",
       text = vim.trim(item.message:gsub("[\n]", "")):sub(0, vim.o.columns),
       full_text = vim.trim(item.message),
