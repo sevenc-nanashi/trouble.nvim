@@ -64,10 +64,6 @@ function M.workspace_diagnostics(_, bufnr, cb, _)
     else
       severity = item.severity
     end
-    
-    if next(vim.fn.sign_getdefined("Coc" .. severity)) == nil then
-      M.error("Unknown severity " .. severity)
-    end
 
     table.insert(items, {
       bufnr = bufnr,
@@ -76,7 +72,7 @@ function M.workspace_diagnostics(_, bufnr, cb, _)
       col = col + 1,
       start = start,
       finish = finish,
-      sign = vim.fn.sign_getdefined("Coc" .. severity)[0]["text"],
+      sign = vim.fn.sign_getdefined("Coc" .. severity)[1]["text"],
       sign_hl = "Coc" .. severity .. "Sign",
       text = vim.trim(item.message:gsub("[\n]", "")):sub(0, vim.o.columns),
       full_text = vim.trim(item.message),
